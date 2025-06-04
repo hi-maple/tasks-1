@@ -1,0 +1,32 @@
+import pandas as pd
+
+# Loading the dataset 
+df = pd.read_csv("marketing_campaign.csv", sep="\t")
+
+# Drop rows with missing Income
+df = df.dropna(subset=['Income'])
+
+# Standardize text values
+df['Education'] = df['Education'].str.strip().str.title()
+df['Marital_Status'] = df['Marital_Status'].str.strip().str.title()
+
+# Convert customer birthday to datetime
+df['year_birth'] = pd.to_datetime(df['Dt_Customer'], dayfirst=True)
+
+# Rename all columns
+df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_')
+
+# Fix datatypes
+df['year_birth'] = df['year_birth'].astype(int)
+df['income'] = df['income'].astype(float)
+
+# Add age column
+df['age'] = 2025 - df['year_birth']
+
+# Sort by Customer_id
+df = df.sort_values(by='Customer_id', ascending=False)
+
+# Save the cleaned dataset
+df.to_csv("cleaned_marketing_campaign.csv", index=False)
+
+print("File cleaned and saved as 'cleaned_marketing_campaign.csv'")
