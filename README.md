@@ -16,7 +16,7 @@ Step	Description
 1. Handled Missing Values	Detected and removed rows with missing entries using filters.
 2. Removed Duplicates	Used Excel's Remove Duplicates feature to eliminate redundant rows.
 3. Standardized Text	Cleaned and formatted inconsistent values (e.g., gender, country names).
-4. Formatted Dates	Converted Dt_Customer column to dd-mm-yyyy format.
+4. Formatted Dates	Converted birth_year column to dd-mm-yy format.
 5. Renamed Column Headers	Converted column names to lowercase and replaced spaces with underscores.
 6. Fixed Data Types	Ensured numerical columns (e.g., Age, Income) and dates were correctly typed.
 7. Python code also written for cleaning.
